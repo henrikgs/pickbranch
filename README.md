@@ -15,3 +15,8 @@ You can then:
 - type to filter
 - use arrow keys to traverse list of branches
 - hit _Enter_ to go to selected branch
+
+### Tips
+
+Search for `^start` to find branches beginning with `start`.
+It's also possible to use other regular expressions.
