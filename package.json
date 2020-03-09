@@ -1,0 +1,15 @@
+{
+  "name": "pickbranch",
+  "version": "1.0.0",
+  "description": "Pick a git branch",
+  "main": "index.js",
+  "bin": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Henrik Glasø Skifjeld <henrikgs@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^7.0.6"
+  }
+}
