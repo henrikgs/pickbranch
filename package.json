@@ -1,6 +1,6 @@
 {
   "name": "pickbranch",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Pick a git branch",
   "main": "index.js",
   "bin": "./index.js",
@@ -10,6 +10,7 @@
   "author": "Henrik Glasø Skifjeld <henrikgs@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^7.0.6"
+    "inquirer": "^7.0.6",
+    "inquirer-autocomplete-prompt": "^1.0.2"
   }
 }
