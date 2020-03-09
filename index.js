@@ -28,7 +28,8 @@ async function getBranches() {
   return branches
     .split('\n')
     .map(branch => branch.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .map((branch, index) => ({ name: branch, index }));
 }
 
 async function search(branches, input) {
@@ -37,9 +38,9 @@ async function search(branches, input) {
   } else {
     try {
       const regex = new RegExp(input);
-      return branches.filter(branch => regex.test(branch.replace('* ', '')));
+      return branches.filter(({ name }) => regex.test(name.replace('* ', '')));
     } catch (error) {
-      return branches.filter(branch => branch.includes(input));
+      return branches.filter(({ name }) => name.includes(input));
     }
   }
 }
@@ -53,7 +54,10 @@ async function main() {
         name: 'branch',
         type: 'autocomplete',
         message: 'Pick a branch',
-        source: (_, input) => search(branches, input)
+        source: async (_, input) => {
+          const result = await search(branches, input);
+          return result.map(({ index, name }) => `${index} ${name}`);
+        }
       }
     ]);
 
