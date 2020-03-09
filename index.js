@@ -35,8 +35,12 @@ async function search(branches, input) {
   if (!input) {
     return branches;
   } else {
-    const regex = new RegExp(input);
-    return branches.filter(branch => regex.test(branch.replace('* ', '')));
+    try {
+      const regex = new RegExp(input);
+      return branches.filter(branch => regex.test(branch.replace('* ', '')));
+    } catch (error) {
+      return branches.filter(branch => branch.includes(input));
+    }
   }
 }
 
