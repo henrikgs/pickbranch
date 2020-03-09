@@ -62,4 +62,33 @@ async function main() {
   }
 }
 
-main();
+function hasArgs(...args) {
+  for (const arg of process.argv) {
+    if (args.includes(arg)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+const helpText = `
+  Run pickbranch in any git repository.
+  Use arrow keys to pick a branch or search for branch name.
+
+  Options:
+
+    -h, --help      output this help
+    -v, --version   output the version number
+`;
+
+async function run() {
+  if (hasArgs('--version', '-v')) {
+    console.log(require('./package.json').version);
+  } else if (hasArgs('--help', '-h')) {
+    console.log(helpText);
+  } else {
+    await main();
+  }
+}
+
+run();
