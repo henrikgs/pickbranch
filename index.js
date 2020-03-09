@@ -36,7 +36,7 @@ async function search(branches, input) {
     return branches;
   } else {
     const regex = new RegExp(input);
-    return branches.filter(branch => regex.test(branch));
+    return branches.filter(branch => regex.test(branch.replace('* ', '')));
   }
 }
 
