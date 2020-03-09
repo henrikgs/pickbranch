@@ -35,7 +35,8 @@ async function search(branches, input) {
   if (!input) {
     return branches;
   } else {
-    return branches.filter(branch => branch.indexOf(input) > -1);
+    const regex = new RegExp(input);
+    return branches.filter(branch => regex.test(branch));
   }
 }
 
