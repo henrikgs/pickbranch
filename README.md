@@ -1,6 +1,9 @@
-# pickbranch
+# pickbranch 
+
+[![npm](https://img.shields.io/npm/v/pickbranch)](https://www.npmjs.com/package/pickbranch) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 Pick a git branch
+
 
 ## Install
 
