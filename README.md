@@ -21,5 +21,10 @@ You can then:
 
 ### Tips
 
-Search for `^start` to find branches beginning with `start`.
-It's also possible to use other regular expressions.
+- Search for `^start` to find branches beginning with `start`. It's also possible to use other regular expressions.
+
+- Add a git alias in `~/.gitconfig`. Then use `git pick` to pick a branch in your git repo.
+  ```
+  [alias]
+      pick = "!f() { pickbranch; }; f"
+  ```
