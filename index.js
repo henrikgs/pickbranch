@@ -3,8 +3,18 @@
 const inquirer = require('inquirer');
 const inquirerAutocompletePrompt = require('inquirer-autocomplete-prompt');
 const { exec } = require('child_process');
+const readline = require('readline');
 
 inquirer.registerPrompt('autocomplete', inquirerAutocompletePrompt);
+
+// exit on escape
+readline.emitKeypressEvents(process.stdin);
+process.stdin.setRawMode(true);
+process.stdin.on('keypress', (_, key) => {
+  if ((key || {}).name === 'escape') {
+    process.exit(0);
+  }
+});
 
 function execPromise(cmd) {
   return new Promise((resolve, reject) => {
@@ -27,7 +37,7 @@ async function getBranches() {
 
   return branches
     .split('\n')
-    .map(branch => branch.trim())
+    .map((branch) => branch.trim())
     .filter(Boolean);
 }
 
@@ -37,9 +47,9 @@ async function search(branches, input) {
   } else {
     try {
       const regex = new RegExp(input);
-      return branches.filter(branch => regex.test(branch.replace('* ', '')));
+      return branches.filter((branch) => regex.test(branch.replace('* ', '')));
     } catch (error) {
-      return branches.filter(branch => branch.includes(input));
+      return branches.filter((branch) => branch.includes(input));
     }
   }
 }
@@ -53,8 +63,8 @@ async function main() {
         name: 'branch',
         type: 'autocomplete',
         message: 'Pick a branch',
-        source: (_, input) => search(branches, input)
-      }
+        source: (_, input) => search(branches, input),
+      },
     ]);
 
     // current branch starts with "* ", no need to checkout
@@ -79,6 +89,7 @@ function hasArgs(...args) {
 const helpText = `
   Run pickbranch in any git repository.
   Use arrow keys to pick a branch or search for branch name.
+  Esc key to exit.
 
   Options:
 
