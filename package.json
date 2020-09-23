@@ -1,6 +1,6 @@
 {
   "name": "pickbranch",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Pick a git branch",
   "main": "index.js",
   "bin": "./index.js",
@@ -17,7 +17,7 @@
     "list"
   ],
   "dependencies": {
-    "inquirer": "^7.0.6",
-    "inquirer-autocomplete-prompt": "^1.0.2"
+    "inquirer": "^7.3.3",
+    "inquirer-autocomplete-prompt": "^1.1.0"
   }
 }
