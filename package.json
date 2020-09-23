@@ -1,6 +1,6 @@
 {
   "name": "pickbranch",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Pick a git branch",
   "main": "index.js",
   "bin": "./index.js",
