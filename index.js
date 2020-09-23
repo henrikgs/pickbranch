@@ -7,14 +7,15 @@ const readline = require('readline');
 
 inquirer.registerPrompt('autocomplete', inquirerAutocompletePrompt);
 
-// exit on escape
-readline.emitKeypressEvents(process.stdin);
-process.stdin.setRawMode(true);
-process.stdin.on('keypress', (_, key) => {
-  if ((key || {}).name === 'escape') {
-    process.exit(0);
-  }
-});
+function exitOnEscapeListener() {
+  readline.emitKeypressEvents(process.stdin);
+  process.stdin.setRawMode(true);
+  process.stdin.on('keypress', (_, key) => {
+    if ((key || {}).name === 'escape') {
+      process.exit(0);
+    }
+  });
+}
 
 function execPromise(cmd) {
   return new Promise((resolve, reject) => {
@@ -103,6 +104,7 @@ async function run() {
   } else if (hasArgs('--help', '-h')) {
     console.log(helpText);
   } else {
+    exitOnEscapeListener();
     await main();
   }
 }
