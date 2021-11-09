@@ -25,5 +25,5 @@ You can then:
 - Add a git alias in `~/.gitconfig`. Then use `git pick` to pick a branch in your git repo.
   ```
   [alias]
-      pick = "!f() { pickbranch; }; f"
+      pick = "!f() { pickbranch $@; }; f"
   ```
