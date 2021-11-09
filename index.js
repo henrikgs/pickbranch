@@ -61,7 +61,7 @@ async function main(lastArg) {
 
     if (branches.includes(lastArg)) {
       await setBranch(lastArg);
-      return;
+      process.exit(0);
     }
 
     const answers = await inquirer.prompt([
