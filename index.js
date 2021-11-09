@@ -55,9 +55,14 @@ async function search(branches, input) {
   }
 }
 
-async function main() {
+async function main(lastArg) {
   try {
     const branches = await getBranches();
+
+    if (branches.includes(lastArg)) {
+      await setBranch(lastArg);
+      return;
+    }
 
     const answers = await inquirer.prompt([
       {
@@ -105,7 +110,8 @@ async function run() {
     console.log(helpText);
   } else {
     exitOnEscapeListener();
-    await main();
+    const lastArg = process.argv[process.argv.length - 1];
+    await main(lastArg);
   }
 }
 
